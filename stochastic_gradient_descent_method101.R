@@ -1,10 +1,9 @@
 #確率的最急勾配法
 
-r=0.1
+r=0.01
 epsilon=0.001
 end=0
 end_list=list(0,0,0,0,0)
-end=list(1,1,1,1,1)
 
 cnt=0
 N=2000
