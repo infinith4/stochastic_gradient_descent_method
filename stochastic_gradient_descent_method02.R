@@ -1,4 +1,12 @@
 #確率的最急勾配法
+f<-file("rnorm_data.txt","r")
+data=function(){
+    a<-readLines(con=f,1)    
+    b=unlist(strsplit(a, "\\,")) # 文字ピリオッド "," で分割
+    return(as.numeric(b))
+}
+#data()#ファイルの1行目が読み込まれる
+#data()#ファイルの2行目が読み込まれる
 
 r=0.01
 epsilon=0.00001
@@ -7,12 +15,14 @@ cnt=0
 N=10000
 
 #初期値
-w=rnorm(5)
+w=data()
+
+f<-file("rnorm_data.txt","r")
 
 for(cnt in 1:N){
     if(end==0){
         #初期値
-        x=rnorm(5)#N(0,1)の乱数
+        x=data()#N(0,1)の乱数
         
         y=w%*%x
         w_previous=w
@@ -34,25 +44,5 @@ for(cnt in 1:N){
     }
 }
 
-
-
-
-
-
-#初期値
-x=rnorm(5)#N(0,1)の乱数
-w=rnorm(5)
-
-
-w=c(1,2,3)
-x=c(1,2,3)
-y=w%*%x
-y
-w_previous=c(1,2,3)
-w=w_previous+r*y*(x-y*w_previous)
-w
-1+0.1*14*(1-14)
-2+0.1*14*(2-14*2)
-3+0.1*14*(3-14*3)
-
+close(f)
 
