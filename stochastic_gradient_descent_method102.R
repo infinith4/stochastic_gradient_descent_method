@@ -65,19 +65,21 @@ for(cnt in 1:N){
                 }    
             }
             w_list[[i]]=w_previous_list[[i]]+r*y_list[[i]]*(x-y_list[[i]]*w_previous_list[[i]]-2*orthogonal)
-            cat("i==",i,"::")
-            cat("cnt==",cnt,":\n")
-            cat(w_list[[i]],"\n")
-            cat(w_previous_list[[i]],"\n\n")
+            #cat("i==",i,"::")
+            #cat("cnt==",cnt,":\n")
+            #cat(w_list[[i]],"\n")
+            #cat(w_previous_list[[i]],"\n\n")
             if((w_list[[i]]-w_previous_list[[i]])%*%(w_list[[i]]-w_previous_list[[i]])<epsilon){
                 w_conv_list[[i]]=w_list[[i]]
                 end_list[[i]]=1
                 end_cnt_list[[i]]=cnt
+                cat("i==",i,"::")
+                cat("cnt==",cnt,":\n")
                 cat("w_",i,"is convergence.(cnt=",cnt,")\n")
-                cat("(w_list[[i]]-w_previous_list[[i]])%*%(w_list[[i]]-w_previous_list[[i]])<epsilon\n")
+                cat("||w_list[[i]]-w_previous_list[[i]]||^2<epsilon\n")
                 cat((w_list[[i]]-w_previous_list[[i]])%*%(w_list[[i]]-w_previous_list[[i]]),"\n\n")
-                cat(w_list[[i]],"\n")
-                cat(w_previous_list[[i]],"\n\n")
+                cat("w_list[[i]]",w_list[[i]],"\n")
+                cat("w_previous_list[[i]]",w_previous_list[[i]],"\n\n")
             }else if(cnt==N){
                 cat("Not Covergence\n")
                 cat("cnt==",N,"\n")
@@ -89,8 +91,8 @@ for(cnt in 1:N){
     
 }
 
-end_list
-end_cnt_list
+unlist(end_list)
+unlist(end_cnt_list)
 
 
 close(f)
